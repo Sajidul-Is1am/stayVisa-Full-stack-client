@@ -1,29 +1,31 @@
 /* eslint-disable react/prop-types */
 
-import { differenceInDays } from "date-fns";
+// import { differenceInDays } from "date-fns";
+import { formatDistance } from "date-fns";
 import Button from "../../../components/Button/Button";
 import Calander from "../Calander/Calander";
 import { useState } from "react";
+// import { useState } from "react";
 
 const RoomRegervation = ({ room }) => {
   // price calculation
 
-  // let totalDays = parseInt(
-  //     formatDistance(new Date(room?.to), new Date(room?.from)).split(' ')[0]
-  // )
-  // let totalPrice = room?.price * totalDays
-  // console.log(totalPrice);
+  let totalDays = parseInt(
+    formatDistance(new Date(room?.to), new Date(room?.from)).split(" ")[0]
+  );
+  let totalPrice = room?.price * totalDays;
+  console.log(totalPrice);
 
-  const fromDate = new Date(room?.to);
-  const toDate = new Date(room?.from);
-  const totalDays = differenceInDays(fromDate, toDate);
-    const totalPrice = room?.price * totalDays;
-  
-//   const [vvlue, setValue] = useState({
-//     startDate: new Date(room?.from),
-//     endDate: new Date(room?.to),
-//     key: "selection",
-//   });
+  // const fromDate = new Date(room?.to);
+  // const toDate = new Date(room?.from);
+  // const totalDays = differenceInDays(fromDate, toDate);
+  // const totalPrice = room?.price * totalDays;
+
+  const [value, setValue] = useState({
+    startDate: new Date(room?.from),
+    endDate: new Date(room?.to),
+    key: "selection",
+  });
 
   return (
     <div className="rounded border border-neutral-300 bg-white">
@@ -32,7 +34,7 @@ const RoomRegervation = ({ room }) => {
       </div>
       <hr />
       <div className="flex justify-center">
-        <Calander ></Calander>
+        <Calander value={value}></Calander>
       </div>
       <hr />
       <div className="p-4">

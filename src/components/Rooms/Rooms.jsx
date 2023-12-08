@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { useSearchParams } from "react-router-dom";
 import Heading from "../Shared/Heading/Heading";
-import { Helmet } from "react-helmet-async";
+import { getAllRooms } from "../../api/Room";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
   const [params, setParams] = useSearchParams();
   const catagory = params.get("catagory");
+
   useEffect(() => {
-    fetch("../../../public/rooms.json")
-      .then((res) => res.json())
+    getAllRooms()
       .then((data) => {
         if (catagory) {
           const filterd = data.filter((room) => room?.category === catagory);

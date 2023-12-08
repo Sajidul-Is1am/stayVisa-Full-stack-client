@@ -1,0 +1,18 @@
+/* In your stylesheet or style block */
+@keyframes spin {
+    0% {
+        transform: rotate(10px);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.custom-spin{
+    color: red;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 7s linear infinite;
+    /* Adjust the animation duration for your desired speed */
+}
